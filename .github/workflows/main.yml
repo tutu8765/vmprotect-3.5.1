@@ -13,7 +13,7 @@ jobs:
       uses: seanmiddleditch/gha-setup-vsdevenv@master
  
     - name: Install Qt
-	  working-directory: ${{env.GITHUB_WORKSPACE}}
+      working-directory: ${{env.GITHUB_WORKSPACE}}
       run: |
         pip install aqtinstall
         mkdir Qt
@@ -22,7 +22,7 @@ jobs:
         aqt install-qt windows desktop 5.12.12 win64_msvc2017_64
          
     - name: build x64
-	  working-directory: ${{env.GITHUB_WORKSPACE}}
+      working-directory: ${{env.GITHUB_WORKSPACE}}
       shell: cmd
       run: |
         set QTDIR=%GITHUB_WORKSPACE%\Qt\5.12.12\msvc2017_64
@@ -31,7 +31,7 @@ jobs:
         cmd.exe /c build-ultimate-x64.bat
  
     - name: Upload artifact
-      uses: actions/upload-artifact@v3  # Updated from v1 to v3
+      uses: actions/upload-artifact@v3
       with:
         name: vmp
         path: bin
